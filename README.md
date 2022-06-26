@@ -1,6 +1,6 @@
 # Code bin
 ***Code bin*** it's a JSON api to manage your files.<br>
-It's completely based on HTTP, no front-end.
+It's completely backend, no front-end.
 
 # How to install
 ```
