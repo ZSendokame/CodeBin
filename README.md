@@ -32,7 +32,11 @@ http://localhost:5000/post
 
 # Also, you can create directories.
 {
-    "type"
+    "type": "directory"
+    "directory": [
+        "directory_one",
+        "directory_two"
+    ]
 }
 
 # (POST) Delete selected files, it receives an array.
