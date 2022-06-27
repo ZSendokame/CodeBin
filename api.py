@@ -1,4 +1,5 @@
 import os
+import shutil
 import time
 from flask import Flask, request, send_file
 
@@ -31,17 +32,32 @@ def download(file):
 
 @app.post('/post')
 def post():
-    for file in request.json:
-        with open('./code/' + file) as file_object:
-            file_object.write(request.json[file])
+    file_list = request.json if not 'type' in request.json \
+        else request.json['directory']
+
+    for file in file_list:
+        file_path = './code/' + file.replace('../', '')
+
+        if not 'type' in request.json:
+            with open(file_path, 'a') as file_object:
+                file_object.write(request.json[file])
+
+        elif request.json['type'] == 'directory':
+            os.mkdir(file_path)
 
     return "200"
 
 @app.post('/delete')
 def delete():
     for file in request.json:
-        if os.path.exists('./code/' + file):
-            os.remove('./code/' + file)
+        file_path = './code/' + file.replace('../', '')
+
+        if os.path.exists(file_path):
+            if os.path.isfile(file_path):
+                os.remove(file_path)
+
+            else:
+                shutil.rmtree(file_path)
 
     return "200"
 
