@@ -1,6 +1,6 @@
 # Code bin
-***Code bin*** it's a JSON api to manage your files.<br>
-It's completely backend, no front-end.
+***Code bin*** it's a secure JSON API to manage your files.<br>
+It's completely backend, no front-end.<br>
 
 # How to install
 ```
@@ -28,6 +28,11 @@ http://localhost:5000/post
 {
     "file": fileContent,
     "file_two": fileContent
+}
+
+# Also, you can create directories.
+{
+    "type"
 }
 
 # (POST) Delete selected files, it receives an array.
